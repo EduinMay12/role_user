@@ -1,8 +1,11 @@
-@extends('layouts.template')
-@section('title')
-| Permissions
-@endsection
+@extends('layouts.app', ['title' => __('User Profile')])
+
 @section('content')
+    @include('users.partials.header', [
+        'title' => __('Hello') . ' '. auth()->user()->name,
+        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'class' => 'col-lg-7'
+    ]) 
 <div class="row">
     <div class="col-md-12 mt-3">
         <div class="card">

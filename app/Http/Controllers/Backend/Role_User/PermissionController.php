@@ -22,7 +22,7 @@ class PermissionController extends Controller
 
         $permissions = Permission::all();
 
-        return view('role_user.permission.index', compact('permissions'))->with('status_success', 'Permission updated successfully');
+        return view('role_user.permission.index', compact('permissions'))->with('status_success', 'Permiso actualizado :D');
     }
 
     /**

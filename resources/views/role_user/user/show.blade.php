@@ -1,8 +1,11 @@
-@extends('layouts.template')
-@section('title')
-| {{$user->name}}
-@endsection
+@extends('layouts.app', ['title' => __('User Profile')])
+
 @section('content')
+    @include('users.partials.header', [
+        'title' => __('Hello') . ' '. auth()->user()->name,
+        'description' => __('This is your profile page. You can see the progress you\'ve made with your work and manage your projects or assigned tasks'),
+        'class' => 'col-lg-7'
+    ])
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 mt-3">
@@ -11,7 +14,7 @@
                 <div class="card-header">
                     <h2>{{$user->name}} details</h2>
                 </div>
-                
+
                 <div class="card-body">
                     <div class="container">
                         <div class="form-group">

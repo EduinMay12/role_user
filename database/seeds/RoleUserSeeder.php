@@ -32,7 +32,7 @@ class RoleUserSeeder extends Seeder
         }
         $useradmin = User::create([
 
-            'name' => 'admin',
+            'name' => 'Administrador del Sistema',
             'email' => 'admin@admin.com',
             'password' => Hash::make('1234') // password sin encriptar
         ]);
@@ -42,7 +42,7 @@ class RoleUserSeeder extends Seeder
         }
         $userguest = User::create([
 
-            'name' => 'user',
+            'name' => 'Usuario del Sistema',
             'email' => 'user@user.com',
             'password' => Hash::make('1234') // password sin encriptar
         ]);
@@ -50,7 +50,7 @@ class RoleUserSeeder extends Seeder
 
         //rol de admin
         $roleadmin = Role::create([
-            'name' => 'Admin',
+            'name' => 'Administrador',
             'slug' => 'admin',
             'description' => 'Administrator',
             'full_access' => 'yes'
@@ -60,7 +60,7 @@ class RoleUserSeeder extends Seeder
 
         //rol de guest
         $roleguest = Role::create([
-            'name' => 'Guest',
+            'name' => 'Usuario',
             'slug' => 'guest',
             'description' => 'Guest',
             'full_access' => 'no'
@@ -72,19 +72,19 @@ class RoleUserSeeder extends Seeder
 
         //Categorias
         $user_category = Category::create([
-            'name' => 'User',
-            'description' => 'All the user functions'
+            'name' => 'Usuario',
+            'description' => 'Todas las funciones de los usuarios del sistema'
         ]);
         $role_category = Category::create([
-            'name' => 'Role',
-            'description' => 'All the role functions'
+            'name' => 'Roles',
+            'description' => 'Todas las funciones de los roles'
         ]);
         $self_category = Category::create([
-            'name' => ' Category',
-            'description' => 'All the category functions'
+            'name' => ' Categorias',
+            'description' => 'Todas las funciones de las categorias'
         ]);
 
-        
+
 
         //Permissions
         $permission_all = [];
@@ -96,17 +96,17 @@ class RoleUserSeeder extends Seeder
         //permission_role
         $permission = Permission::create([
             'category_id' => $user_category->id,
-            'name' => 'List user',
+            'name' => 'Lista de usuario',
             'slug' => 'user.index',
-            'description' => 'A user can list user'
+            'description' => 'Un usuario puede listar usuarios'
         ]);
         //add permission to array
         $permission_all[] = $permission->id;
         $permission = Permission::create([
             'category_id' => $user_category->id,
-            'name' => 'Show user',
+            'name' => 'Ver Usuarios',
             'slug' => 'user.show',
-            'description' => 'A user can show user'
+            'description' => 'Un usuario puede ver al usuario'
         ]);
 
         $permission_all[] = $permission->id;
@@ -119,9 +119,9 @@ class RoleUserSeeder extends Seeder
         $permission_all[] = $permission->id;
         $permission = Permission::create([
             'category_id' => $user_category->id,
-            'name' => 'Edit user',
+            'name' => 'Editar usuarios',
             'slug' => 'user.edit',
-            'description' => 'A user can edit user'
+            'description' => 'Un usuario puede editar al usuario'
         ]);
         //add permission to array
         $permission_all[] = $permission->id;
@@ -131,9 +131,9 @@ class RoleUserSeeder extends Seeder
 
         $permission = Permission::create([
             'category_id' => $user_category->id,
-            'name' => 'Destroy user',
+            'name' => 'Eliminar usuarios',
             'slug' => 'user.destroy',
-            'description' => 'A user can destroy user'
+            'description' => 'Un usuario puede destruir al usuario'
         ]);
 
 
@@ -195,6 +195,7 @@ class RoleUserSeeder extends Seeder
             'slug' => 'role.edit',
             'description' => 'A user can edit role'
         ]);
+
         //add permission to array
         $permission_all[] = $permission->id;
 

@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        Gate::authorize('haveaccess', 'user.index');
+        Gate::authorize('haveaccess', 'users.index');
 
         //Con el with trae el usuario con pivot es decir con los roles que tiene el usuario
         $users = User::with('roles')->get();
@@ -107,7 +107,7 @@ class UserController extends Controller
         }
 
 
-        return redirect()->route('user.index')->with('status_success', 'User updated successfully');
+        return redirect()->route('users.index')->with('status_success', 'Usuario Actualizado :D');
     }
 
     /**
@@ -120,6 +120,6 @@ class UserController extends Controller
     {
         Gate::authorize('haveaccess', 'user.destroy');
         $user->delete();
-        return redirect()->route('user.index')->with('status_success', 'User deleted successfully');
+        return redirect()->route('users.index')->with('status_success', 'User deleted successfully');
     }
 }

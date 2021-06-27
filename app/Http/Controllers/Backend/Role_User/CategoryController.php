@@ -23,7 +23,7 @@ class CategoryController extends Controller
 
         return view('role_user.category.index', [
             'categories' => $categories
-        ])->with('status_success', 'Permission updated successfully');
+        ])->with('status_success', 'Categoria actualizada :D');
     }
 
     /**

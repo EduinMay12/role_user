@@ -23,7 +23,7 @@ class RoleController extends Controller
 
         $roles = Role::all();
 
-        return view('role_user.role.index', compact('roles'))->with('status_success', 'Role updated successfully');
+        return view('role_user.role.index', compact('roles'))->with('status_success', 'Rol actualizado');
     }
 
     /**

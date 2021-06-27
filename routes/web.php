@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.template');
+    return view('./welcome');
 })->name('home');
 
 Auth::routes();
@@ -24,4 +24,15 @@ Auth::routes();
 Route::resource('/user','Backend\Role_User\UserController',['except'=>['create','store']])->names('user');
 Route::resource('/role','Backend\Role_User\RoleController')->names('role');
 Route::resource('/category','Backend\Role_User\CategoryController')->names('category');
-Route::resource('/permission','Backend\Role_User\PermissionController')->names('permission');
+Route::resource('/permission','Backend\Role_User\PermissionController')->names('permission');Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::post('profile', 'UserController@update_avatar');
+	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
+});
+
